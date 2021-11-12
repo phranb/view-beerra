@@ -443,7 +443,7 @@ export default {
       newOther:{},
       newBottle:{},
       newContainer:{},
-      date:Date.now,
+      date: new Date().toISOString().slice(0,10),
       client:"",
       prices:[],
       sizes:[],
