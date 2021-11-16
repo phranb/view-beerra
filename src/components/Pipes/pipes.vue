@@ -834,7 +834,7 @@ export default {
       this.totalPints = 0
       this.totalContainers = 0
       this.client = ""
-      this.date = ""
+      this.date = new Date().toISOString().slice(0,10)
   },
   notifyWarning(title,text){
    Vue.notify({
