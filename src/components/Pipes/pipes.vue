@@ -38,7 +38,8 @@
                   <radial-progress-bar :diameter="diametro" :startColor="'#FDC02F'" :stopColor="'#FA9628'" :completed-steps="keg.quantitySaled"
                     :total-steps="keg.quantity" class="">
                     <p><span class="badge badge-warning badgeGradient tamano nowrap" style="max-width: 150px;">{{ keg.brewery.name }}</span></p>
-                    <p><span class="badge badge-dark">{{ keg.quantity }} <span class="litros">l</span></span></p>
+                    <p><span class="badge badge-dark">{{ keg.quantity }} <span class="litros">l</span></span>
+                    <span class="badge badge-dark">{{ keg.ibu }} <span class="litros">Nº</span></span></p>
                     <template v-if="keg.quantitySaled<=15">
                       <p><span class="badge badge-danger">{{ keg.quantitySaled }} <span class="litros">l</span></span></p>
                     </template>
