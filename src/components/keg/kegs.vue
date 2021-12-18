@@ -11,11 +11,13 @@
     <div class="container">
 
       <div class="row">
-        <div class="col-12 col-sm-12  col-md-3">
+        <div class="col-12 col-sm-12 col-md-3">
           <div v-if="errorMessage" class="alert alert-danger" role="alert">
             {{ errorMessage }}
           </div>
+          <div class=" stay-fixed">
           <div class="card bg-dark limitHeight">
+            
 
             <template v-if="edit === false">
               <div class="card-header bg-dark">
@@ -74,12 +76,14 @@
                     <input type="text" class="form-control mb-1" v-model="newKeg.quantitySaled" placeholder="Cantidad disponible"
                       required>
                   </template>
-                    <label>IBU</label>  <label style="float: right; text-align: left;">Alcohol</label>
+                  <!-- IBU cambio a ser Numero de Barril -->
+                    <label>Nº Barril</label>  
+                    <!-- <label style="float: right; text-align: left;">Alcohol</label> -->
                     <div class="ibuandalco">
 
-                  <input style="width: 48%; float: left;" type="text" class="form-control mb-1" v-model="newKeg.ibu" placeholder="" required>
+                  <input style="width: 99%; float: left;" type="text" class="form-control mb-1" v-model="newKeg.ibu" placeholder="" required>
                 
-                  <input style="width: 48%; float: right;" type="text" class="form-control mb-1" v-model="newKeg.alcohol" placeholder="" required>
+                  <!-- <input style="width: 48%; float: right;" type="text" class="form-control mb-1" v-model="newKeg.alcohol" disabled="true" value="5"> -->
 </div>
   <label>Cervecería</label>
                   <select  style="margin-bottom: 1em !important;" v-model="newKeg.brewery" class="custom-select mb-1" required >
@@ -106,6 +110,7 @@
             </div>
           </div>
         </div>
+        </div>
 
         <div style="margin-bottom: 3em;" class="col-12 col-sm-12 col-md-9">
           <div class="card tabla bg-dark">
@@ -118,21 +123,21 @@
                   <th>Cerveza</th>
                   <th>Disponible</th>
                   <th>Estado</th>
-                  <th>IBU</th>
-                  <th>Alcohol</th>
+                  <th>Nº Barril</th>
+                  
                   <th>Cerveceria</th>
                   <th>Opciones</th>
               
                 </thead>
                 <tbody>
                
-                  <tr v-for="keg in kegs" class="trHigh">
-                       <template v-if="keg.sta !== 5">
+                  <tr v-for="keg in kegs.slice().reverse()" class="trHigh">
+                       <template v-if="keg.sta !== 5 && keg.sta !== 3">
                     <td style="max-width: 120px;" class="nowrap">{{keg.beer}}</td>
                     <td><strong style="font-size: 16px;">{{keg.quantitySaled}}<span class="litros"> l</span></strong> /{{keg.quantity}}<span class="litros"> l</span></td>
                     <td>{{selectStatus(keg.sta)}}</td>
-                    <td>{{keg.ibu}}</td>
-                    <td>{{keg.alcohol}} %</td>
+                    <td>{{keg.ibu}}</td> <!-- Numero Barril -->
+                    
                     <td style="max-width: 120px;" class="nowrap">{{keg.brewery.name}}</td>
                 
                     <div id="options" class="opacityOut">
@@ -187,12 +192,13 @@ const schema = Joi.object().keys({
     quantity : Joi.number().positive().min(20).max(50).required(),
     sta : Joi.number().positive().required(),
     ibu : Joi.number().positive().required(),
-    alcohol : Joi.number().positive().required(),
+    alcohol : 5,
     brewery : Joi.required(),
     quantitySaled : Joi.number().positive().max(50)
 })
 
 class newKeg {
+
   constructor(id, beer, quantity, status, ibu, alcohol, brewery,quantitySaled) {
     this.id = id
     this.beer = beer
@@ -573,5 +579,9 @@ background: rgba(255, 255, 255, 0.063);
 
   /* position: static !important; */
   width: 257px !important;
+}
+
+.stay-fixed{
+ position: fixed
 }
 </style>
