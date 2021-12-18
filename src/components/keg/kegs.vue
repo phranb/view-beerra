@@ -11,11 +11,13 @@
     <div class="container">
 
       <div class="row">
-        <div class="col-12 col-sm-12  col-md-3">
+        <div class="col-12 col-sm-12 col-md-3">
           <div v-if="errorMessage" class="alert alert-danger" role="alert">
             {{ errorMessage }}
           </div>
+          <div class=" stay-fixed">
           <div class="card bg-dark limitHeight">
+            
 
             <template v-if="edit === false">
               <div class="card-header bg-dark">
@@ -107,6 +109,7 @@
               </form>
             </div>
           </div>
+        </div>
         </div>
 
         <div style="margin-bottom: 3em;" class="col-12 col-sm-12 col-md-9">
@@ -576,5 +579,9 @@ background: rgba(255, 255, 255, 0.063);
 
   /* position: static !important; */
   width: 257px !important;
+}
+
+.stay-fixed{
+ position: fixed
 }
 </style>
