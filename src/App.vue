@@ -243,8 +243,8 @@
         <p class="footP">
           <!--<img class="footerImg" src="./beerrazeiv0.png">-->
           <small style="color:#FD9326; letter-spacing: 0.05em;">beerra</small>
-          <small style="color: #6b6b6b;">2019</small>
-          <small style="font-size: 10px; margin-bottom: 0.3em;">info@beerra.com.ar</small>
+          <small style="color: #6b6b6b;">2021</small>
+          <small style="font-size: 10px; margin-bottom: 0.3em;">Felices fiestas</small>
         </p>
       </div>
     </div>
